@@ -1,7 +1,13 @@
 <template>
   <div class="container">
-    <Header title="Task Tracker"/>
-    <Tasks @delete-task="deleteTask" :tasks="tasks" />
+    <Header @toggle-add-task="toggleAddTask" title="Task Tracker" :showAddTask="showAddTask"/>
+    
+    
+    <Tasks @toggle-reminder="toggleReminder" @delete-task="deleteTask" :tasks="tasks" />
+    
+    <router-view :showAddTask="showAddTask"></router-view>
+    
+    <Footer />
   </div>
   
 </template>
@@ -9,46 +15,26 @@
 
 <script>
 import Header from './components/Header'
-import Tasks from './components/Tasks'
+import Footer from './components/Footer'
+
 
 export default {
   name: 'App',
   components: {
    Header,
-   Tasks,
+   Footer,
   },
   data() {
     return {
-      tasks:[],
+
+      showAddTask: false,
     }
   },
   methods: {
-    deleteTask(id) {
-      if (confirm('Delete this item?')) 
-        this.tasks = this.tasks.filter((task) => task.id !== id);
+    toggleAddTask() {
+      this.showAddTask = !this.showAddTask;
     }
   },
-  created() {
-    this.tasks = [
-      {
-        id: 1,
-        text: "Doctor Appointment",
-        day: "March 1st at 2:30pm",
-        reminder: true,
-      }, {
-        id: 2,
-        text: "Meeting at School",
-        day: "March 3st at 1:30pm",
-        reminder: true,
-      }, {
-        id: 3,
-        text: "Food Shopping",
-        day: "March 3st at 11:00am",
-        reminderremainder: false,
-      },
-
-    ]
-  }
 }
 </script>
 

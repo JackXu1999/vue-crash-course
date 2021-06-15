@@ -13,6 +13,20 @@
         placeholder="Add Day & Time"
       />
     </div>
+
+    <div class="form-control form-control-select">
+      <label>Priority</label>
+      <select
+        type="text"
+        v-model="priority"
+        name="priority"
+      >
+        <option value="top">Top</option>
+        <option value="second">Second</option>
+        <option value="third">Third</option>
+      </select>
+    </div>
+
     <div class="form-control form-control-check">
       <label>Set Reminder</label>
       <input type="checkbox" v-model="reminder" name="reminder" />
@@ -73,13 +87,20 @@ export default {
   padding: 3px 7px;
   font-size: 17px;
 }
+.form-control-select {
+  display: flex;
+  justify-content: space-between;
+  height: 20px;
+}
+
+
 .form-control-check {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 .form-control-check label {
-  flex: 1;
+  flex: 10;
 }
 .form-control-check input {
   flex: 2;

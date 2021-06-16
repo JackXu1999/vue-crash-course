@@ -1,28 +1,20 @@
 {
   "tasks": [
     {
-      "id": "1",
-      "text": "Doctors Appointment",
-      "day": "March 5th at 2:30pm",
-      "reminder": true
+      "priority": "top",
+      "category": "study",
+      "date": "2021-06-16T03:19:13.399Z",
+      "text": "Talk to Boss",
+      "reminder": true,
+      "id": 1
     },
     {
-      "id": "2",
-      "text": "Meeting with boss",
-      "day": "March 6th at 1:30pm",
-      "reminder": true
-    },
-    {
-      "id": "3",
-      "text": "Food shopping",
-      "day": "March 7th at 2:00pm",
-      "reminder": false
-    },
-    {
-      "text": "Hello Günter",
-      "day": "22",
+      "priority": "top",
+      "category": "study",
+      "date": "2021-06-17T16:00:00.000Z",
+      "text": "Go shopping",
       "reminder": false,
-      "id": "_Jn1sbO"
+      "id": 2
     }
   ]
 }

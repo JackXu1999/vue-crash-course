@@ -2,19 +2,11 @@
   "tasks": [
     {
       "priority": "top",
-      "category": "study",
-      "date": "2021-06-16T03:19:13.399Z",
-      "text": "Talk to Boss",
-      "reminder": true,
-      "id": 1
-    },
-    {
-      "priority": "top",
-      "category": "study",
-      "date": "2021-06-17T16:00:00.000Z",
-      "text": "Go shopping",
+      "category": "shopping",
+      "date": "2021-06-17T09:00:09.096Z",
+      "text": "Hello Günter",
       "reminder": false,
-      "id": 2
+      "id": 1
     }
   ]
 }

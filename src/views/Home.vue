@@ -34,7 +34,26 @@ export default {
         body: JSON.stringify(task),
       })
       const data = await res.json()
-      this.tasks = [...this.tasks, data]
+      if (data.priority === 'top') {
+        this.tasks = [data, ...this.tasks]
+      } else if (data.priority === 'second') {
+        let newTask = [];
+        let i = 0;
+        while (i < this.tasks.length && this.tasks[i].priority === 'top') {
+          newTask.push(this.tasks[i]);
+          i++;
+        }
+        newTask.push(data);
+        while (i < this.tasks.length) {
+          newTask.push(this.tasks[i]);
+          i++;
+        }
+        this.tasks = newTask;
+      } else {
+        this.tasks = [...this.tasks, data]
+      }
+
+      // this.tasks = [...this.tasks, data]
     },
     async deleteTask(id) {
       if (confirm('Are you sure?')) {
@@ -64,7 +83,19 @@ export default {
     async fetchTasks() {
       const res = await fetch('api/tasks')
       const data = await res.json()
-      return data
+      const newData = [];
+
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].priority === 'top') newData.push(data[i]);
+      }
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].priority === 'second') newData.push(data[i]);
+      }
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].priority === 'third') newData.push(data[i]);
+      }
+
+      return newData;
     },
     async fetchTask(id) {
       const res = await fetch(`api/tasks/${id}`)

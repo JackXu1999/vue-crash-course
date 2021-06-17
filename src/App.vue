@@ -1,10 +1,13 @@
 <template>
   <div class="container">
+    <h3>{{time}}</h3>
+
     <Header @toggle-add-task="toggleAddTask" title="Task Tracker" :showAddTask="showAddTask"/>
-    
     
     <Tasks @toggle-reminder="toggleReminder" @delete-task="deleteTask" :tasks="tasks" />
     
+    <h4>Tasks Completed Today:</h4>
+
     <router-view :showAddTask="showAddTask"></router-view>
     
     <Footer />
@@ -26,18 +29,35 @@ export default {
   },
   data() {
     return {
-      showAddTask: false,
+      showAddTask: true,
+      time: "",
     }
   },
   methods: {
     toggleAddTask() {
       this.showAddTask = !this.showAddTask;
+    },
+    getTime() {
+      const today = new Date();
+      const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+      const minute = today.getMinutes() < 10 ? '0' + today.getMinutes(): today.getMinutes();
+      const time = today.getHours() + ":" + minute;
+      const dateTime = date +' '+ time;
+      this.time = dateTime;
     }
   },
+  created() {
+    setInterval(this.getTime, 1000);
+  }
 }
 </script>
 
-
+<style scoped>
+h3{
+  text-align: center;
+  margin-bottom: 10px;
+}
+</style>
 
 
 

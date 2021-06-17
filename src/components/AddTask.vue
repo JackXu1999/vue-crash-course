@@ -83,8 +83,7 @@ export default {
             text: this.text, 
             reminder: this.reminder,
         }
-        console.log(new Date(year, monthIndex, day))
-        console.log(newTask.date);
+        // console.log(newTask.date);
         this.$emit('add-task', newTask);
 
         this.text = '';
@@ -119,6 +118,7 @@ export default {
 .form-control-select {
   display: flex;
   justify-content: space-between;
+  text-align-last:center;
   height: 20px;
 }
 
@@ -135,7 +135,9 @@ export default {
   flex: 2;
   height: 20px;
 }
-
+.btn.btn-block{
+  background-color: forestgreen;
+}
 </style>
 
 <style>

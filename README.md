@@ -1,4 +1,4 @@
-# simple-project
+# vue-todolist
 
 ## Project setup
 ```
@@ -13,6 +13,12 @@ npm run serve
 ### Compiles and minifies for production
 ```
 npm run build
+```
+
+
+### Run backend JSON server
+```
+npm run backend
 ```
 
 ### Customize configuration

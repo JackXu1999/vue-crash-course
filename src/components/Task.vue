@@ -2,8 +2,12 @@
     <div @dblclick="$emit('toggle-reminder', task.id)" :class="[task.reminder ? 'reminder' : '', 'task', task.priority, task.category]">
         <h3>
             {{task.text}}
-            <!-- <i @click="$emit('complete-task', task.id)" class="fas fa-check"></i> -->
-            <i @click="$emit('delete-task', task.id)" class="fas fa-times"></i>
+
+            <span>
+              <i @click="$emit('delete-task', task.id)" class="fas fa-times"></i>
+              <i @click="$emit('complete-task', task.id)" class="fas fa-check"></i>
+            </span>
+ 
         </h3>
         <p>{{task.date.substring(0, 10)}}</p>
     </div>
@@ -21,12 +25,6 @@ export default {
 </script>
 
 <style scoped>
-.fas.fa-times {
-  color: red;
-}
-.fas.fa-check {
-  color: green;
-}
 .task {
   background: #f4f4f4;
   margin: 5px;
@@ -64,5 +62,12 @@ export default {
 }
 .task.shopping {
   border-right: 5px solid orange;
+}
+.fas.fa-times {
+  color: red;
+  margin-right: 15px;
+}
+.fas.fa-check {
+  color: green;
 }
 </style>

@@ -1,12 +1,10 @@
 <template>
   <div class="container">
-    <h3>{{time}}</h3>
+    <h3>{{dateTime}}</h3>
 
     <Header @toggle-add-task="toggleAddTask" title="Task Tracker" :showAddTask="showAddTask"/>
     
-    <Tasks @toggle-reminder="toggleReminder" @delete-task="deleteTask" :tasks="tasks" />
-    
-    <h4>Tasks Completed Today:</h4>
+    <h4>Tasks Completed Today: {{taskCompletedToday}}</h4>
 
     <router-view :showAddTask="showAddTask"></router-view>
     
@@ -29,11 +27,16 @@ export default {
   },
   data() {
     return {
-      showAddTask: true,
+      showAddTask: false,
+      dateTime: "",
       time: "",
+      taskCompletedToday: 0,
     }
   },
   methods: {
+    updateTask() {
+      this.taskCompletedToday++;
+    },
     toggleAddTask() {
       this.showAddTask = !this.showAddTask;
     },
@@ -41,9 +44,19 @@ export default {
       const today = new Date();
       const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
       const minute = today.getMinutes() < 10 ? '0' + today.getMinutes(): today.getMinutes();
+      const second = today.getSeconds() < 10 ? '0' + today.getSeconds(): today.getSeconds();
+  
       const time = today.getHours() + ":" + minute;
       const dateTime = date +' '+ time;
-      this.time = dateTime;
+
+      this.dateTime = dateTime;
+      this.time = time;
+
+      const timeSecond = time + ":" + second;
+
+      if (timeSecond === '00:00:00') {
+        this.taskCompletedToday = 0;
+      }
     }
   },
   created() {

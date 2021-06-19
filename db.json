@@ -2,11 +2,28 @@
   "tasks": [
     {
       "priority": "top",
-      "category": "shopping",
-      "date": "2021-06-17T09:00:09.096Z",
+      "category": "study",
+      "date": "2021-06-18T08:06:35.486Z",
       "text": "Hello Günter",
       "reminder": false,
-      "id": 1
+      "id": 3
+    },
+    {
+      "priority": "third",
+      "category": "leisure",
+      "date": "2021-06-18T08:06:45.339Z",
+      "text": "Test1",
+      "reminder": false,
+      "id": 4
+    },
+    {
+      "priority": "top",
+      "category": "study",
+      "date": "2021-06-19T16:00:00.000Z",
+      "text": "buy car",
+      "reminder": false,
+      "id": 5
     }
-  ]
+  ],
+  "tasksCompleted": []
 }

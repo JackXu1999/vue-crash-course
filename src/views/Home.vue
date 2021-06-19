@@ -1,10 +1,6 @@
 <template>
   <AddTask v-show="showAddTask" @add-task="addTask" />
-  <Tasks
-    @toggle-reminder="toggleReminder"
-    @delete-task="deleteTask"
-    :tasks="tasks"
-  />
+  <Tasks @toggle-reminder="toggleReminder" @delete-task="deleteTask" @complete-task="completeTask" :tasks="tasks" />
 </template>
 
 <script>
@@ -55,8 +51,34 @@ export default {
 
       // this.tasks = [...this.tasks, data]
     },
+    async completeTask(id) {
+      if (confirm(`Complete Task?`)) {
+        const resDelete = await fetch(`api/tasks/${id}`, {
+          method: 'DELETE',
+        })
+
+
+        const res = await fetch('api/tasksCompleted');
+        const data = await res.json();
+        console.log(data);
+
+        // const resPost = await fetch( `api/tasksCompleted/0`, {
+        //   method: 'POST',
+        //    headers: {
+        //     'Content-Type': 'application/json',
+        //   },
+        //   body: 
+        // })
+
+        if (resDelete.status === 200) {
+          (this.tasks = this.tasks.filter((task) => task.id !== id))
+        } else {
+          alert('Error completing task')
+        }
+      }
+    },
     async deleteTask(id) {
-      if (confirm('Are you sure?')) {
+      if (confirm(`Delete Task?`)) {
         const res = await fetch(`api/tasks/${id}`, {
           method: 'DELETE',
         })
